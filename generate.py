@@ -22,10 +22,11 @@ if __name__ == "__main__":
     links = get_links(base_url + start_path, prefix="/?sicp-ex-")
     print(f"found {len(links)} links")
     output_pdfs = []
-    for start in range(0, len(links), 50):
-        output = f"output_{start}-{start+50}.pdf"
+    chunk_size = 50
+    for start in range(0, len(links), chunk_size):
+        output = f"output_{start}-{start + chunk_size}.pdf"
         try:
-            pdfkit.from_url(links[start:start+50], output, options={"enable-local-file-access": ""})
+            pdfkit.from_url(links[start:start + chunk_size], output, options={"enable-local-file-access": ""})
         except:  # sometimes exits with ProtocolUnknownError, seems ignorable
             pass
         merger.append(output)
