@@ -9,7 +9,13 @@ To regenerate:
 2. Setup Python by installing:
 
 ```shell
-pip install requests beautifulsoup4 pdfkit
+pip install requests beautifulsoup4 pdfkit pypdf
 ```
 
-3. Run `python generate.py`
+3. Temporarily change file limit for current shell (may be different on different OS's)
+
+```shell
+ulimit -n 10240
+```
+
+4. Run `python generate.py`
